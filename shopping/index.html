@@ -62,35 +62,35 @@
         <img id="floor" src="img/marble.jpg">
         <img id="welcome" src="img/welcome.png">
         <video id="start01" autoplay loop="false" src="Resources/Start.mp4"></video>
+        <a-mixin id="plane" geometry="height: 4; width: 10" pivot="-2 0.5 0"></a-mixin>
       </a-assets>
       <!--<a-camera position="0 0 1" cursor-visible="true" cursor-scale="2" cursor-color="#000" cursor-offset="2" cursor-maxdistance="100" cursor-opacity="0.5" cursor-fuse="true"></a-camera>-->
       <a-light color="#fff" position="0 5 0" type="ambient"></a-light>
-      <a-entity camera look-controls wasd-controls position='0 1 1'>
+      <a-entity id="camera01" camera look-controls wasd-controls position='0 1 1'>
         <a-entity cursor="fuse: true; fuseTimeout: 500"
             position="0 1 0"
             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
             material="color: black; shader: flat">
         </a-entity>
+        <a-animation attribute="position" begin="walk" duration="10000" to="0 1 -20"></a-animation>
       </a-entity>
         <!--<a-entity light="type: point; color: #EEE; intensity: 0.5" position="0 3 0"></a-entity>-->
-
-       <!-- <a-entity id="model" position="0 0 -3">
-          <a-animation attribute="rotation" from="0 -30 0" to="0 330 0" dur="15000"
-                       easing="linear" repeat="indefinite"></a-animation>
-          <a-collada-model position="-.35 0 .55" rotation="0 -20 0" scale="1.5 1.5 1.5"
-                           src="#why-male-models"></a-collada-model>
-          <a-image src="#shadow2" rotation="-90 0 0" scale="0.5 0.5 0.5"></a-image>
-        </a-entity>
-        -->
       <a-entity id= "scene01">
         <a-curvedimage id="mozvr-logo" src="#mozvr" radius="6.7" width="13" theta-length="66" height="10"
                        position="0 3.8 -2" opacity="0.9">
-          <a-animation attribute="rotation" from="0 10 0" to="0 200 0" delay="500"
+          <a-animation attribute="rotation" begin="rotate" from="0 10 0" to="0 195 0" delay="500"
                        dur="1000"></a-animation>
         </a-curvedimage>
-        <a-curvedimage id="timeline_Insights" radius="6.7" theta-length="60"  height="5"
+        <a-curvedimage id="timeline_Insights" radius="6.7" theta-length="50"  height="4"
                        position="0 3 0" scale="1 1 1">
-          <a-animation attribute="rotation" from="0 130 0" to="0 150 0" delay="750"
+          <a-animation attribute="rotation" begin="rotate" from="0 200 0" to="0 140 0" delay="750"
+                       dur="1000"></a-animation>
+        </a-curvedimage>
+        <a-curvedimage id="WelcomeIMG" src="img/welcomeIMG.PNG" radius="6" theta-length="60"  height="3"
+                       position="0 1 1.3" scale="0.1 0.1 0.1">
+          <a-animation attribute="rotation" begin="rotate" from="0 10 0" to="0 150 0" delay="750"
+                       dur="1000"></a-animation>
+          <a-animation attribute="rotation" begin="hide" from="0 10 0" to="0 150 0" delay="750"
                        dur="1000"></a-animation>
         </a-curvedimage>
 
@@ -103,51 +103,61 @@
         <a-light type="directional" color="#fff" intensity="0.2" position="-1 2 1"></a-light>
         <a-light type="ambient" color="#fff"></a-light>
 
-        <a-video id="video1" class="video" src="#start01" width="6" height="4" position="0 2 -0.5"></a-video>
+        <a-video id="video1" class="video" src="#start01" width="6" height="4" position="0 1.8 -0.5"></a-video>
        
         <!--<a-image id="image" width="26" height="20" position="-9 4 -21" src="" ></a-image>-->
-        
-        <a-entity id="2010"
-          position="0 0 -3.9"
-          text="color: black; align: center; value: 2010; width: 5"
-          rotation="0 0 0">
-        </a-entity>
+        <a-plane id="story01" geometry="height: 4; width: 8" pivot="-2 0.5 0" position="0 1.6 -1" color="#F16745">
+          <a-entity id="text"
+            text="color: black; align: center; value: Let us take you to the life journey of John, who was born in 2010. Don't worry, We will come back here to review this.; width: 6"
+            rotation="0 0 0">
+          </a-entity>
+          <a-animation begin="story" attribute="scale" from="1 0 1" to="1 1 1" dur="1500" delay="500"
+                       fill="backwards"></a-animation>
+        </a-plane>
+        <a-entity id="yearTimeline" visible="false">
+          <a-entity id="2010"
+            position="0 0 -3.9"
+            text="color: black; align: center; value: 2010; width: 5"
+            rotation="0 0 0">
+          </a-entity>
 
-        <a-entity id="2011" position="2.34 0 -3.12" text="color: black; align: center; value: 2011; width: 5" rotation="0 -45 0" scale="" visible="">
-        </a-entity>
+          <a-entity id="2011" position="2.34 0 -3.12" text="color: black; align: center; value: 2011; width: 5" rotation="0 -45 0" scale="" visible="">
+          </a-entity>
 
-        <a-entity id="2012" position="3.12 0 -2.34" text="color: black; align: center; value: 2012; width: 5" rotation="0 -54 0" scale="" visible="">
-        </a-entity>
+          <a-entity id="2012" position="3.12 0 -2.34" text="color: black; align: center; value: 2012; width: 5" rotation="0 -54 0" scale="" visible="">
+          </a-entity>
 
-        <a-entity id="2013" position="3.57 0 -1.56" text="color: black; align: center; value: 2013; width: 5" rotation="0 -63 0" scale="" visible="">
-        </a-entity>
+          <a-entity id="2013" position="3.57 0 -1.56" text="color: black; align: center; value: 2013; width: 5" rotation="0 -63 0" scale="" visible="">
+          </a-entity>
 
-        <a-entity id="2014" position="3.82 0 -0.78" text="color: black; align: center; value: 2014; width: 5" rotation="0 -81 0" scale="" visible="">
-        </a-entity>
+          <a-entity id="2014" position="3.82 0 -0.78" text="color: black; align: center; value: 2014; width: 5" rotation="0 -81 0" scale="" visible="">
+          </a-entity>
 
-        <a-entity id="2015" position="3.9 0 0" text="color: black; align: center; value: 2015; width: 5" rotation="0 -90 0" scale="" visible="">
-        </a-entity>
+          <a-entity id="2015" position="3.9 0 0" text="color: black; align: center; value: 2015; width: 5" rotation="0 -90 0" scale="" visible="">
+          </a-entity>
 
-        <a-entity id="2016" position="3.82 0 0.78" text="color: black; align: center; value: 2016; width: 5" rotation="0 -99 0" scale="" visible="">
-        </a-entity>
+          <a-entity id="2016" position="3.82 0 0.78" text="color: black; align: center; value: 2016; width: 5" rotation="0 -99 0" scale="" visible="">
+          </a-entity>
 
-        <a-entity id="2017" position="3.57 0 1.56" text="color: black; align: center; value: 2017; width: 5" rotation="0 -117 0" scale="" visible="">
-        </a-entity>
+          <a-entity id="2017" position="3.57 0 1.56" text="color: black; align: center; value: 2017; width: 5" rotation="0 -117 0" scale="" visible="">
+          </a-entity>
 
-        <a-entity id="2018" position="3.12 0 2.34" text="color: black; align: center; value: 2018; width: 5" rotation="0 -126 0" scale="" visible="">
-        </a-entity>
+          <a-entity id="2018" position="3.12 0 2.34" text="color: black; align: center; value: 2018; width: 5" rotation="0 -126 0" scale="" visible="">
+          </a-entity>
 
-        <a-entity id="2019" position="2.34 0 3.12" text="color: black; align: center; value: 2019; width: 5" rotation="0 -135 0" scale="" visible="">
-        </a-entity>
+          <a-entity id="2019" position="2.34 0 3.12" text="color: black; align: center; value: 2019; width: 5" rotation="0 -135 0" scale="" visible="">
+          </a-entity>
 
-        <a-entity id="2020"
-          position="0 0 3.9"
-          text="color: black; align: center; value: 2020; width: 5"
-          rotation="0 0 0">
+          <a-entity id="2020"
+            position="0 0 3.9"
+            text="color: black; align: center; value: 2020; width: 5"
+            rotation="0 0 0">
+          </a-entity>
         </a-entity>
         <a-animation attribute="position" begin="fadeOut" duration="5000" to="0 0 -60"></a-animation>
         <!--<a-animation attribute="rotation" begin="fadeOut" duration="5000" to="0 0 0"></a-animation>-->
       </a-entity>
+
       <a-entity id="scene02" visible='false' position='0 0 -200'>
     
         <a-sky color='#7EC0EE'></a-sky>
@@ -168,16 +178,20 @@
         <a-image position="1.1 1.3 -6" scale="2 2 2" src="./img/speech-bubble.png"></a-image>
         <a-image position="1.1 1.3 -9" scale="2 2 2" src="./img/speech-bubble.png"></a-image>
         <a-image position="1.1 1.3 -12" scale="2 2 2" src="./img/speech-bubble.png"></a-image>
-
+        <a-image position="0 0.25 -15" scale="2 2 2" rotation="-90 0 0" src="./img/end.png"></a-image>
         <!-- Carpet. -->
         <a-entity geometry="primitive: box; depth: 60; height: 0.025; width: 2"
                   material="color: #440000; metalness: 0; src: #carpet;
                             repeat: 3 40; roughness: 1"
                   position="0 .2 0">
         </a-entity>
-        <a-collada-model id="infantModel" position="-1.2 0.15 -3" rotation="0 45 0" scale="1 1 1" src="#kid"></a-collada-model>
+        <a-collada-model id="infantModel" position="-1.2 0.15 -3" rotation="0 45 0" scale="1 1 1" src="#kid"><a-animation attribute="rotation" from="0 45 0" to="0 405 0" dur="15000"
+                     easing="linear" repeat="indefinite"></a-animation></a-collada-model>
+          
         <a-collada-model id="kidModel" position="-1.2 0.13 -6" rotation="0 45 0" scale="1 1 1" src="#kid"></a-collada-model>
-        <a-collada-model id="teenModel" position="-1.2 0.15 -9" rotation="0 45 0" scale="1 1 1" src="#male"></a-collada-model>
+        <a-collada-model id="teenModel" position="-1.2 0.15 -9" rotation="0 45 0" scale="1 1 1" src="#male"><a-animation attribute="rotation" from="0 45 0" to="0 405 0" dur="15000"
+                     easing="linear" repeat="indefinite"></a-animation></a-collada-model>
+
         <a-collada-model id="manModel" position="-1.2 0.13 -12" rotation="0 45 0" scale="1 1 1" src="#male"></a-collada-model>
         <a-animation attribute="position" begin="fadeOut" duration="5000" to="0 0 0"></a-animation>
       </a-entity>
@@ -185,6 +199,8 @@
     <script>
     var scene = document.querySelector("a-scene");
     var vid = document.getElementById("start01");
+    var scene01;
+    var scene02;
 
     if (scene.hasLoaded) {
       run();
@@ -197,6 +213,8 @@
             console.log("VR Mode entered");
             this.style.display = "none";
             vid.play();
+            scene01 = document.getElementById('scene01');
+            scene02 = document.getElementById('scene02');
         }, false);
     }
 
@@ -220,18 +238,14 @@
         var anim=document. createElement('a-animation');
         anim.setAttribute('attribute','scale');
         anim.setAttribute('to','2 2 1');
-        //var coloranim=document.createElement('a-animation');
-        //coloranim.setAttribute('attribute','material.color');
-        //coloranim.setAttribute('to','white');
         year.appendChild(anim);
-       /// year.appendChild(coloranim);
 
         var c = document.querySelector('#map canvas');
         var img = c.toDataURL('image/png');
         var texture = document.getElementById('mozvr-logo');
         texture.setAttribute('src', img);
         var yeartexture = document.getElementById('timeline_Insights');
-        var yearImageloc = 'Timeline_Images/'+selectedyear+'.jpg';
+        var yearImageloc = 'Timeline_Images/'+selectedyear+'.PNG';
         yeartexture.setAttribute('src', yearImageloc);
     });
 
@@ -242,21 +256,70 @@
         videoframe.parentNode.removeChild(videoframe);
 
         console.log("video stopped");
-        
-        var scene01 = document.getElementById('scene01');
-        scene01.emit('fadeOut');
-        var i = setInterval(function(){          
-          scene01.setAttribute('visible', false);
-          var scene02 = document.getElementById('scene02');
-          scene02.setAttribute('visible','true');
-          scene02.emit('fadeOut');
-          if(2 > 1) {
-              clearInterval(i);
-          }
-        }, 300);        
+        startTheApp();
     });
 
-    function startyearInterval(){
+    function startTheApp() {
+      var counter = 0;
+      var welcomeIMG = document.getElementById('WelcomeIMG');
+      welcomeIMG.emit('rotate');
+      var storyPLN = document.getElementById('story01');
+          storyPLN.setAttribute('visible','false');
+      var i = setInterval(function(){
+        
+        if(counter ===0)
+        {
+          welcomeIMG.emit('hide');
+          welcomeIMG.setAttribute('visible','false');
+
+          var mapIMG = document.getElementById('mozvr-logo');
+          mapIMG.emit('rotate');
+          var timelineIMG = document.getElementById('timeline_Insights');
+          timelineIMG.emit('rotate');
+          var timelineEntity = document.getElementById('yearTimeline');
+          timelineEntity.setAttribute('visible', 'true');
+        }
+        if(counter ===1)
+        {
+          //var storyPLN = document.getElementById('story01');
+          storyPLN.setAttribute('visible','true');
+          storyPLN.emit('story');
+        }
+        if(counter > 2) {
+             changeScene();
+             clearInterval(i);
+        }
+
+        counter +=1;
+      }, 5000);
+    }
+
+    function changeScene() {
+      scene01 = document.getElementById('scene01');
+      scene01.emit('fadeOut');
+      scene02 = document.getElementById('scene02');
+        
+      var i = setInterval(function(){          
+        scene01.setAttribute('visible', false);
+        scene02.setAttribute('visible','true');
+        scene02.emit('fadeOut');
+          //var scene02 = document.getElementById('scene02');
+          //scene02.setAttribute('visible','true');
+          //scene02.emit('fadeOut');
+          //executeScene2();
+        if(2 > 1) {
+            clearInterval(i);
+        }
+      }, 5000);
+    }
+
+    function executeScene2() {
+      var camera = document.getElementById('camera01');
+      //  camera.emit('walk');
+      //startyearTimeline();
+    }
+
+    function startyearTimeline(){
       var i = setInterval(function(){
             
             //document.querySelector('a-link').navigate('VR-slide/index.html');
@@ -308,17 +371,7 @@
             anim1.setAttribute('attribute','scale');
             anim1.setAttribute('to','1 1 1');
             prev.appendChild(anim1);
-          // yearAnimation(selectedyear);
-           //var year10 = document.getElementById('2014');
-          /*
-           var animation = document.createElement("a-animation");
-          
-          animation.setAttribute("attribute","position");
-          animation.setAttribute("from","3.9 0 0");
-          animation.setAttribute("to","0 0 -3.8)");//{ x: -year19Pos.x, y: 0, z: -year19Pos.z });
-          animation.setAttribute("dur","1000");
-          animation.setAttribute("delay","500");
-          year10.appendChild(animation);*/
+
           if(selectedyear<2020){
 
                 var nextYear = document.getElementById(selectedyear+1);
@@ -334,13 +387,7 @@
             var visibility = map.getLayoutProperty(layer, 'visibility');
 
             if (visibility === 'visible') 
-                map.setLayoutProperty(layer, 'visibility', 'none');
-            
-            //var coloranim=document.createElement('a-animation');
-            //coloranim.setAttribute('attribute','material.color');
-            //coloranim.setAttribute('to','blue');
-            //prev.appendChild(coloranim);
-            
+                map.setLayoutProperty(layer, 'visibility', 'none');            
           }
           previousSelectedYear = selectedyear;
 
@@ -350,11 +397,10 @@
             var texture = document.getElementById('mozvr-logo');
             texture.setAttribute('src', img);
             var yeartexture = document.getElementById('timeline_Insights');
-           // var yearImageloc = 'Timeline_Images/'+selectedyear+'.jpg';
-            var yearImageloc = 'Timeline_Images/test.png';
+            var yearImageloc = 'Timeline_Images/'+selectedyear+'.PNG';
+            //var yearImageloc = 'Timeline_Images/test.png';
             yeartexture.setAttribute('src', yearImageloc);  
         
-            //document.getElementById('image').appendChild(texture);
             // When a click event occurs on a feature in the states layer, open a popup at the
             // location of the click, with description HTML from its properties.
             /*map.on('click', jsonfile, function (e) {
@@ -373,9 +419,6 @@
             map.on('mouseleave', jsonfile, function () {
                 map.getCanvas().style.cursor = '';
             });*/
-            
-
-        //});  
 
         firstload +=1;
         return true;
@@ -390,12 +433,7 @@
       var x = -Math.abs(year19Pos.x);
       var z = -Math.abs(year19Pos.z);
       var pos = {x:Number(x), y: 0, z: Number(z)};
-      //var yRot = 180+year19Rot.y;
-     // var rot = 0+' '+yRot+' '+0;
-      
-      //year10.setAttribute('rotation', "0 45 0")
-      //year10.setAttribute('animation', {property: 'position', dur: 1000, easing: 'easeInSine', to: '-2.34 0 -3.12'});
-    
+     
         
         while(yearCounter<=2020)
         {
@@ -407,35 +445,14 @@
          // if (temp.hasLoaded) {
           var tempPos = temp.getAttribute('position');
           var tempRot = temp.getAttribute('rotation');
-          /*} else {
-            temp.addEventListener("loaded", function(){
-              var tempPos = temp.getAttribute('position');
-            var tempRot = temp.getAttribute('rotation');
-            });
-          }*/
+        
           var tposition = {x:Number(tempPos.x), y:Number(tempPos.y), z:Number(tempPos.z)};
           //  if (currentYearEntity.hasLoaded) {
               //currentYearEntity.setAttribute('rotation', { x: 0, y: -tempRot.y, z: 0})
           
             currentYearEntity.setAttribute('rotation', '0 0 0')
             currentYearEntity.setAttribute('animation', {property: 'position', dur: 1000, to: tposition});
-       /*     }
-        else {
-            currentYearEntity.addEventListener("loaded", function(){
-              currentYearEntity.setAttribute('rotation', '0 0 0')
-            currentYearEntity.setAttribute('animation', {property: 'position', dur: 1000, easing: 'easeInSine', to: tposition});
-            });
-          }*/
-/*
-          
-          currentYearEntity.setAttribute('rotation', { x: 0, y: -tempRot.y, z: 0})
-          animation = document.createElement("a-animation");
-          animation.setAttribute("attribute","position");
-          animation.setAttribute("to",{ x: tempPos.x, y: 0, z: tempPos.z });
-          animation.setAttribute("dur","1000");
-          animation.setAttribute("repeat","0");
-          currentYearEntity.appendChild(animation);*/
-
+      
           yearCounter +=1;
         }
         //var xyz = {x:0, y:0, z:2};
@@ -452,25 +469,7 @@
           //year10.setAttribute('rotation', {x: 0,y: yRot, z:0});
           }); 
         
-      }
-        /*
-        var xPosition = Math.pow(3.9,2)
-        var year=document.getElementById(selectedyear);
-        var atr = year.getAttribute('position');
-            var anim=document.createElement('a-animation');
-            //anim.setAttribute('scale', {x: 2, y: 2, z: 2})
-           // anim.setAttribute('rotation', {from:"0 100 0", to:"0 180 0", delay:"750", dur:"1000"})
-            
-            //anim.setAttribute('attribute','scale');
-            anim.setAttribute('to','2 2 2');
-            anim.setAttribute('attribute','rotation');
-            var rotationanim=document.createElement('a-animation');
-            rotationanim.setAttribute('attribute','rotation');
-            rotationanim.setAttribute('from','0 100 0');
-            rotationanim.setAttribute('to','0 180 0');
-            rotationanim.setAttribute('delay','750');
-            rotationanim.setAttribute('dur','1000');*/
-
+       }
     }
 </script>
 
