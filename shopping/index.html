@@ -72,7 +72,7 @@
             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
             material="color: black; shader: flat">
         </a-entity>
-        <a-animation attribute="position" begin="walk" duration="10000" to="0 1 -20"></a-animation>
+        <a-animation attribute="position" begin="walk" easing="linear" duration="5000000" delay="2000" to="0 1 -12"></a-animation>
       </a-entity>
         <!--<a-entity light="type: point; color: #EEE; intensity: 0.5" position="0 3 0"></a-entity>-->
       <a-entity id= "scene01">
@@ -86,7 +86,7 @@
           <a-animation attribute="rotation" begin="rotate" from="0 200 0" to="0 140 0" delay="750"
                        dur="1000"></a-animation>
         </a-curvedimage>
-        <a-curvedimage id="WelcomeIMG" src="img/welcomeIMG.PNG" radius="6" theta-length="60"  height="3"
+        <a-curvedimage id="WelcomeIMG" src="img/welcomeIMG.png" radius="6" theta-length="60"  height="3"
                        position="0 1 1.3" scale="0.1 0.1 0.1">
           <a-animation attribute="rotation" begin="rotate" from="0 10 0" to="0 150 0" delay="750"
                        dur="1000"></a-animation>
@@ -306,16 +306,22 @@
           //var scene02 = document.getElementById('scene02');
           //scene02.setAttribute('visible','true');
           //scene02.emit('fadeOut');
-          //executeScene2();
+          executeScene2();
         if(2 > 1) {
             clearInterval(i);
         }
-      }, 5000);
+      }, 500);
     }
 
     function executeScene2() {
       var camera = document.getElementById('camera01');
-      //  camera.emit('walk');
+      var i = setInterval(function(){
+        camera.emit('walk');
+        if(2 > 1) {
+            clearInterval(i);
+        }
+      },10000);
+      //  
       //startyearTimeline();
     }
 
