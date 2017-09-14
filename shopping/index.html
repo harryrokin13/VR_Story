@@ -66,7 +66,7 @@
       </a-assets>
       <!--<a-camera position="0 0 1" cursor-visible="true" cursor-scale="2" cursor-color="#000" cursor-offset="2" cursor-maxdistance="100" cursor-opacity="0.5" cursor-fuse="true"></a-camera>-->
       <a-light color="#fff" position="0 5 0" type="ambient"></a-light>
-      <a-entity id="camera01" camera look-controls wasd-controls position='0 1 1'>
+      <a-entity id="camera01" camera look-controls wasd-controls position='0 0 1'>
         <a-entity cursor="fuse: true; fuseTimeout: 500"
             position="0 1 0"
             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
@@ -75,10 +75,10 @@
         <a-animation attribute="position" begin="walk" easing="linear" dur="50000" delay="2000" to="0 1 -15"></a-animation>
       </a-entity>
         <!--<a-entity light="type: point; color: #EEE; intensity: 0.5" position="0 3 0"></a-entity>-->
-      <a-entity id= "scene01" position="0 0 0">
+      <a-entity id= "scene01">
         <a-curvedimage id="mozvr-logo" src="#mozvr" radius="6.7" width="13" theta-length="66" height="10"
                        position="0 3.8 -2" opacity="0.9">
-          <a-animation attribute="rotation" begin="rotate" from="0 10 0" to="0 195 0" delay="500"
+          <a-animation attribute="rotation" begin="rotate" from="0 10 0" to="0 185 0" delay="500"
                        dur="1000"></a-animation>
         </a-curvedimage>
         <a-curvedimage id="timeline_Insights" radius="6.7" theta-length="50"  height="4"
@@ -87,7 +87,7 @@
                        dur="1000"></a-animation>
         </a-curvedimage>
         <a-curvedimage id="WelcomeIMG" src="img/welcomeIMG.png" radius="6" theta-length="60"  height="3"
-                       position="0 1 1.3" scale="0.1 0.1 0.1">
+                       position="0 0 1" scale="0.1 0.1 0.1">
           <a-animation attribute="rotation" begin="rotate" from="0 10 0" to="0 150 0" delay="750"
                        dur="1000"></a-animation>
           <a-animation attribute="rotation" begin="hide" from="0 10 0" to="0 150 0" delay="750"
@@ -95,7 +95,7 @@
         </a-curvedimage>
 
         <a-entity>
-          <a-cylinder position="0 0 0" radius="4" height="1" side="back" open-ended="true"
+          <a-cylinder position="0 -1 0" radius="4" height="1" side="back" open-ended="true"
                       color="#FFF"></a-cylinder>
         </a-entity>
 
@@ -103,10 +103,10 @@
         <a-light type="directional" color="#fff" intensity="0.2" position="-1 2 1"></a-light>
         <a-light type="ambient" color="#fff"></a-light>
 
-        <a-video id="video1" class="video" src="#start01" width="6" height="4" position="0 1.8 -0.5"></a-video>
+        <a-video id="video1" class="video" src="#start01" width="6" height="4" position="0 1 -0.5"></a-video>
        
         <!--<a-image id="image" width="26" height="20" position="-9 4 -21" src="" ></a-image>-->
-        <a-plane id="story01" geometry="height: 4; width: 8" pivot="-2 0.5 0" position="0 1.6 -1" color="#F16745">
+        <a-plane id="story01" geometry="height: 4; width: 8" pivot="-2 0.5 0" position="0 1 -0.5" color="#F16745">
           <a-entity id="text"
             text="color: black; align: center; value: Let us take you to the life journey of John, who was born in 2010. Don't worry, We will come back here to review this.; width: 6"
             rotation="0 0 0">
@@ -114,7 +114,7 @@
           <a-animation begin="story" attribute="scale" from="1 0 1" to="1 1 1" dur="1500" delay="500"
                        fill="backwards"></a-animation>
         </a-plane>
-        <a-entity id="yearTimeline" visible="false">
+        <a-entity id="yearTimeline" visible="false" position="0 -1 0">
           <a-entity id="2010"
             position="0 0 -3.9"
             text="color: black; align: center; value: 2010; width: 5"
@@ -155,7 +155,7 @@
           </a-entity>
         </a-entity>
         <a-animation attribute="position" begin="fadeOut" dur="5000" to="0 0 -60"></a-animation>
-        <a-animation attribute="position" begin="fadeIn" dur="5000" to="0 0 -16"></a-animation>
+        <a-animation attribute="position" begin="fadeIn" dur="5000" to="0 0 -16.5"></a-animation>
         <!--<a-animation attribute="rotation" begin="fadeOut" duration="5000" to="0 0 0"></a-animation>-->
       </a-entity>
 
@@ -306,13 +306,15 @@
       }
 
       var Originscene = document.getElementById(fromScene);
-      if(fromScene =='scene02'){
+      
         Originscene.emit(anim);
-      }
+      
       DesScene = document.getElementById(toScene);
       Originscene.setAttribute('visible','false');
       DesScene.setAttribute('visible','true');
-      DesScene.emit(anim);
+      //if(fromScene =='scene01'){
+        DesScene.emit(anim);
+      
       var i = setInterval(function(){          
         //Originscene.setAttribute('visible', 'false');
         //DesScene.setAttribute('visible','true');
@@ -334,10 +336,12 @@
     function executeScene2() {
       var adultModel = document.getElementById('adultModel');
       var camera = document.getElementById('camera01');
+      camera.setAttribute('position', '0 1 1');
       var counter =0;
       var i = setInterval(function(){
         if(counter ===1)
         {
+          
           camera.emit('walk');
         }        
         var adultModelPos = adultModel.getAttribute('position');
@@ -345,7 +349,7 @@
         if(adultModelPos.z > camera.getAttribute('position').z)
         {
             clearInterval(i);
-            camera.setAttribute('position', '0 1 1');
+            camera.setAttribute('position', '0 0 1');
             changeScene('scene02','scene01',2);
         }
         counter +=1;
