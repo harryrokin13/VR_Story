@@ -78,7 +78,7 @@
       <a-entity id= "scene01">
         <a-curvedimage id="mozvr-logo" src="#mozvr" radius="6.7" width="8" theta-length="66" height="6"
                        position="0 1.5 1.2" opacity="0.9">
-          <a-animation attribute="rotation" begin="rotate" from="0 10 0" to="0 180 0" delay="500"
+          <a-animation attribute="rotation" begin="rotate" from="0 10 0" to="0 175 0" delay="500"
                        dur="1000"></a-animation>
         </a-curvedimage>
         <a-curvedimage id="timeline_Insights" radius="6.7" theta-length="50"  height="4"
@@ -219,6 +219,8 @@
             console.log("VR Mode entered");
             this.style.display = "none";
             vid.play();
+            var storyPLN = document.getElementById('story01');
+            storyPLN.setAttribute('visible','false');
             scene01 = document.getElementById('scene01');
             scene02 = document.getElementById('scene02');
         }, false);
