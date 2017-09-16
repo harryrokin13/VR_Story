@@ -207,6 +207,7 @@
     var vid = document.getElementById("start01");
     var scene01;
     var scene02;
+    var goodStory = false;
 
     if (scene.hasLoaded) {
       run();
@@ -320,7 +321,11 @@
       Originscene.setAttribute('visible','false');
       DesScene.setAttribute('visible','true');
       //if(fromScene =='scene01'){
-        DesScene.emit(anim);
+      DesScene.emit(anim);
+      if(goodStory == true)
+      {
+        //make the good story visible
+      }
       
       var i = setInterval(function(){          
         //Originscene.setAttribute('visible', 'false');
@@ -354,11 +359,15 @@
         var adultModelPos = adultModel.getAttribute('position');
 
         if(adultModelPos.z > camera.getAttribute('position').z)
-        {
-            clearInterval(i);
-            camera.setAttribute('position', '0 0 1');
-            camera.setAttribute('rotation', '0 0 0');
-            changeScene('scene02','scene01',2);
+        {   
+          if(goodStory ==false)
+            {
+              goodStory = true;
+              clearInterval(i);
+              camera.setAttribute('position', '0 0 1');
+              camera.setAttribute('rotation', '0 0 0');
+              changeScene('scene02','scene01',2);
+            }
         }
         counter +=1;
       },10000);
@@ -367,31 +376,20 @@
     }
 
     function startyearTimeline(){
-      var i = setInterval(function(){
-            
-            //document.querySelector('a-link').navigate('VR-slide/index.html');
-            //var currentJsonFile = 'Geojson/georgia'+selectedyear+'.geo.json';
+      var i = setInterval(function(){            
             success = loadMap(selectedyear);
             if(success == true)
             {
                 selectedyear +=1;
-                //counter +=1;
             }
             success = false;
             if(selectedyear === 2021) {
+                
                 clearInterval(i);
+                changeScene('scene01','scene02',1);
             }
         }, 5000);
     }
-    /*$('#dates a').click(function(event){
-                event.preventDefault();
-                // first vars
-                var selectedyear = $(this).text();
-                $('#dates a').removeClass('selected');
-                $(this).addClass('selected');
-                var currentJsonFile = 'Geojson/georgia'+selectedyear.trim()+'.geo.json';
-                loadMap(currentJsonFile,selectedyear);
-    });*/
 
     function loadMap(selectedyear){
         console.log("in load map. counter: "+firstload);
@@ -402,51 +400,43 @@
         var anim=document. createElement('a-animation');
         anim.setAttribute('attribute','scale');
         anim.setAttribute('to','3 3 3');
-        //var coloranim=document.createElement('a-animation');
-        //coloranim.setAttribute('attribute','material.color');
-        //coloranim.setAttribute('to','white');
         year.appendChild(anim);
         
         var layer = 'georgia_'+previousSelectedYear;
-        //if(firstload>1)
-        //{
 
-            var prev = document.getElementById(previousSelectedYear);
-            prev.setAttribute('position','-2.34 0 -3.12')
-            prev.setAttribute('rotation','0 45 0');
-            var anim1=document. createElement('a-animation');
-            anim1.setAttribute('attribute','scale');
-            anim1.setAttribute('to','1 1 1');
-            prev.appendChild(anim1);
+        var prev = document.getElementById(previousSelectedYear);
+        prev.setAttribute('position','-2.34 0 -3.12')
+        prev.setAttribute('rotation','0 45 0');
+        var anim1=document. createElement('a-animation');
+        anim1.setAttribute('attribute','scale');
+        anim1.setAttribute('to','1 1 1');
+        prev.appendChild(anim1);
 
-          if(selectedyear<2020){
+        if(selectedyear<2020){
+            var nextYear = document.getElementById(selectedyear+1);
+            nextYear.setAttribute('position','2.34 0 -3.12');
+            nextYear.setAttribute('rotation','0 -45 0');
+        }
+        if(previousSelectedYear>2010)
+        {
+          var hideOldPreYr = document.getElementById(previousSelectedYear-1)
+          hideOldPreYr.setAttribute('position','0 0 3.9');
+        }
+        console.log(layer);
+        var visibility = map.getLayoutProperty(layer, 'visibility');
 
-                var nextYear = document.getElementById(selectedyear+1);
-                nextYear.setAttribute('position','2.34 0 -3.12');
-                nextYear.setAttribute('rotation','0 -45 0');
-              }
-          if(previousSelectedYear>2010)
-          {
-            var hideOldPreYr = document.getElementById(previousSelectedYear-1)
-            hideOldPreYr.setAttribute('position','0 0 3.9');
-          }
-            console.log(layer);
-            var visibility = map.getLayoutProperty(layer, 'visibility');
+        if (visibility === 'visible') 
+            map.setLayoutProperty(layer, 'visibility', 'none');            
+  
+        previousSelectedYear = selectedyear;
 
-            if (visibility === 'visible') 
-                map.setLayoutProperty(layer, 'visibility', 'none');            
-          //}
-          previousSelectedYear = selectedyear;
-
-
-            var c = document.querySelector('#map canvas');
-            var img = c.toDataURL('image/png');
-            var texture = document.getElementById('mozvr-logo');
-            texture.setAttribute('src', img);
-            var yeartexture = document.getElementById('timeline_Insights');
-            var yearImageloc = 'Timeline_Images/'+selectedyear+'.PNG';
-            //var yearImageloc = 'Timeline_Images/test.png';
-            yeartexture.setAttribute('src', yearImageloc);  
+        var c = document.querySelector('#map canvas');
+        var img = c.toDataURL('image/png');
+        var texture = document.getElementById('mozvr-logo');
+        texture.setAttribute('src', img);
+        var yeartexture = document.getElementById('timeline_Insights');
+        var yearImageloc = 'Timeline_Images/'+selectedyear+'.PNG';
+        yeartexture.setAttribute('src', yearImageloc);  
         
             // When a click event occurs on a feature in the states layer, open a popup at the
             // location of the click, with description HTML from its properties.
