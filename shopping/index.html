@@ -68,7 +68,7 @@
       <a-light color="#fff" position="0 5 0" type="ambient"></a-light>
       <a-entity id="camera01" camera look-controls wasd-controls position='0 0 1'>
         <a-entity cursor="fuse: true; fuseTimeout: 500"
-            position="0 1 0"
+            position="0 0.5 -3"
             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
             material="color: black; shader: flat">
         </a-entity>
@@ -77,17 +77,17 @@
         <!--<a-entity light="type: point; color: #EEE; intensity: 0.5" position="0 3 0"></a-entity>-->
       <a-entity id= "scene01">
         <a-curvedimage id="mozvr-logo" src="#mozvr" radius="6.7" width="8" theta-length="66" height="6"
-                       position="0 1.5 1.2" opacity="0.9">
+                       position="0 1.5 1.2" opacity="0.9" visible="false">
           <a-animation attribute="rotation" begin="rotate" from="0 10 0" to="0 175 0" delay="500"
                        dur="1000"></a-animation>
         </a-curvedimage>
         <a-curvedimage id="timeline_Insights" radius="6.7" theta-length="50"  height="4"
-                       position="0 1.6 1.3" scale="1 1 1">
+                       position="0 1.6 1.3" scale="1 1 1" visible="false">
           <a-animation attribute="rotation" begin="rotate" from="0 200 0" to="0 140 0" delay="750"
                        dur="1000"></a-animation>
         </a-curvedimage>
         <a-curvedimage id="WelcomeIMG" src="img/welcomeIMG.png" radius="6" theta-length="60"  height="3"
-                       position="0 1.55 1.3" scale="0.1 0.1 0.1">
+                       position="0 1.55 1.3" scale="0.1 0.1 0.1" visible="false">
           <a-animation attribute="rotation" begin="rotate" from="0 10 0" to="0 150 0" delay="750"
                        dur="1000"></a-animation>
           <a-animation attribute="rotation" begin="hide" from="0 10 0" to="0 150 0" delay="750"
@@ -273,26 +273,28 @@
     function startTheApp() {
       var counter = 0;
       var welcomeIMG = document.getElementById('WelcomeIMG');
+      var mapIMG = document.getElementById('mozvr-logo');
+      
+      var timelineEntity = document.getElementById('yearTimeline');
+      welcomeIMG.setAttribute('visible','true');
       welcomeIMG.emit('rotate');
       var storyPLN = document.getElementById('story01');
-          storyPLN.setAttribute('visible','false');
+      storyPLN.setAttribute('visible','false');
       var i = setInterval(function(){
         
         if(counter ===0)
         {
           welcomeIMG.emit('hide');
           welcomeIMG.setAttribute('visible','false');
-
-          var mapIMG = document.getElementById('mozvr-logo');
+          mapIMG.setAttribute('visible','true');
           mapIMG.emit('rotate');
           var timelineIMG = document.getElementById('timeline_Insights');
-          timelineIMG.emit('rotate');
-          var timelineEntity = document.getElementById('yearTimeline');
           timelineEntity.setAttribute('visible', 'true');
+          timelineIMG.setAttribute('visible', 'true');
+          timelineIMG.emit('rotate');        
         }
         if(counter ===1)
         {
-          //var storyPLN = document.getElementById('story01');
           storyPLN.setAttribute('visible','true');
           storyPLN.emit('story');
         }
