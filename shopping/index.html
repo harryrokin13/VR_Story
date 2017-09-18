@@ -185,6 +185,20 @@
         <a-image position="-1.5 1.2 -9.5" rotation="0 45 0" scale="2 2 1" src="./StoryLine/b3.png"></a-image>
         <a-image position="-1.5 1.2 -13.5" rotation="0 45 0" scale="2 2 1" src="./StoryLine/b4.png"></a-image>
         <a-image position="-1.5 1.2 -17.5" rotation="0 45 0" scale="2 2 1" src="./StoryLine/b5.png"></a-image>
+        <a-entity id="goodStoryIMG" visible="false">
+          <a-image position="1.5 1.2 -2.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/b1.png"></a-image>
+          <a-image position="1.5 1.2 -5.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/b2.png"></a-image>
+          <a-image position="1.5 1.2 -9.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/b3.png"></a-image>
+          <a-image position="1.5 1.2 -13.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/b4.png"></a-image>
+          <a-image position="1.5 1.2 -17.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/b5.png"></a-image>
+          <!--<a-image position="1.5 1.2 -2.5" rotation="0 45 0" scale="2 2 1" src="speech1">
+            <a-entity id="text"
+              text="color: black; align: center; value: Story Time!
+              Let us take you through the life journey of John, who was born in 2010.; width: 6"
+              rotation="0 0 0">
+            </a-entity>
+          </a-image>-->
+        </a-entity>
         <a-image position="0 0.25 -24" scale="2 2 1" rotation="-90 0 0" src="./img/end.png"></a-image>
         <!-- Carpet. -->
         <a-entity geometry="primitive: box; depth: 60; height: 0.025; width: 2"
@@ -329,6 +343,8 @@
       DesScene.emit(anim);
       if(goodStory == true)
       {
+        var goodStoryEntity = document.getElementById('goodStoryIMG');
+        goodStoryEntity.setAttribute("visible","true");
         //make the good story visible
       }
       
