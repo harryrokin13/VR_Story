@@ -56,6 +56,8 @@
       <a-assets>
         <a-asset-item id="kid" src="3DModel/Kid/boy.dae"></a-asset-item>
         <a-asset-item id="male" src="3DModel/man/man.dae"></a-asset-item>
+        <a-asset-item id="teen" src="3DModel/TeenBoy/scene.gltf"></a-asset-item>
+        <a-asset-item id="adult" src="3DModel/Sasha_man/scene.gltf"></a-asset-item>
         <img id="mozvr" src="img/mozvr.png">        
         <img id="speech1" src="img/speech-bubble.png">
         <img id="carpet" src="img/carpet.jpg">
@@ -111,7 +113,7 @@
             text="color: black; align: center; value: Story Time!
 
 
-            Let us take you to the life journey of John, who was born in 2010. Don't worry, We will come back here to review this.; width: 6"
+            Let us take you through the life journey of John, who was born in 2010.; width: 6"
             rotation="0 0 0">
           </a-entity>
           <a-animation begin="story" attribute="scale" from="1 0 1" to="1 1 1" dur="1500" delay="500"
@@ -162,7 +164,7 @@
         <!--<a-animation attribute="rotation" begin="fadeOut" duration="5000" to="0 0 0"></a-animation>-->
       </a-entity>
 
-      <a-entity id="scene02" visible='false' position='0 0 -200'>
+      <a-entity id="scene02" visible='false' position='0 0 -20'>
     
         <a-sky color='#7EC0EE'></a-sky>
         <a-entity light="type: point; color: #EEE; intensity: 0.5" position="0 3 0"></a-entity>
@@ -193,13 +195,14 @@
         <a-collada-model id="infantModel" position="-1 0.16 -6" rotation="0 45 0" scale="1 1 1" src="#kid"><a-animation attribute="rotation" from="0 45 0" to="0 405 0" dur="15000"
                      easing="linear" repeat="indefinite"></a-animation></a-collada-model>
           
-        <a-collada-model id="kidModel" position="-1 0.16 -10" rotation="0 45 0" scale="1 1 1" src="#kid"></a-collada-model>
-        <a-collada-model id="teenModel" position="-0.3 0.16 -14" rotation="0 45 0" scale="1 1 1" src="#male"><a-animation attribute="rotation" from="0 45 0" to="0 405 0" dur="15000"
-                     easing="linear" repeat="indefinite"></a-animation></a-collada-model>
-
-        <a-collada-model id="adultModel" position="-0.2 0.16 -18" rotation="0 45 0" scale="1 1 1" src="#male"></a-collada-model>
+        <a-gltf-model id="kidModel" position="-0.5 1.2 -10" rotation="0 0 0" scale="1 1 1" src="#teen"></a-gltf-model>
+        <a-collada-model id="teenModel" position="-0.4 0.16 -14" rotation="0 45 0" scale="1 1 1" src="#male">
+          </a-collada-model>
+        <a-gltf-model  id="adultModel" position="-0.5 1.2 -18" rotation="0 20 0" scale="0.8 0.8 0.8" src="#adult">
+        </a-gltf-model>
+        
         <a-animation attribute="position" begin="fadeOut" dur="5000" to="0 0 0"></a-animation>
-        <a-animation attribute="position" begin="fadeIn" dur="5000" to="0 0 -200"></a-animation>
+        <a-animation attribute="position" begin="fadeIn" dur="5000" to="0 0 -20"></a-animation>
       </a-entity>
     </a-scene>
     <script>
