@@ -69,12 +69,12 @@
       <!--<a-camera position="0 0 1" cursor-visible="true" cursor-scale="2" cursor-color="#000" cursor-offset="2" cursor-maxdistance="100" cursor-opacity="0.5" cursor-fuse="true"></a-camera>-->
       <a-light color="#fff" position="0 5 0" type="ambient"></a-light>
       <a-entity id="camera01" camera look-controls wasd-controls position='0 0 1'>
-        <a-entity cursor="fuse: true; fuseTimeout: 500"
-            position="0 0.5 -1"
+        <!--<a-entity cursor="fuse: true; fuseTimeout: 500"
+            position="0 0 -1"
             geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.015"
             material="color: black; shader: flat">
-        </a-entity>
-        <a-animation attribute="position" begin="walk" easing="linear" dur="55000" delay="20" to="0 1 -20"></a-animation>
+        </a-entity>-->
+        <a-animation attribute="position" begin="walk" easing="linear" dur="60000" delay="20" to="0 1.5 -16"></a-animation>
       </a-entity>
         <!--<a-entity light="type: point; color: #EEE; intensity: 0.5" position="0 3 0"></a-entity>-->
       <a-entity id= "scene01">
@@ -108,17 +108,26 @@
        <a-video id="video1" class="video" src="#start01" width="9" height="4.8" position="0 1 -3.5"></a-video>
        
         <!--<a-image id="image" width="26" height="20" position="-9 4 -21" src="" ></a-image>-->
-        <a-plane id="story01" geometry="height: 4; width: 8" pivot="-2 0.5 -2" position="0 1 -3" color="#F16745">
-          <a-entity id="text"
-            text="color: black; align: center; value: Story Time!
+        <a-image id="story01" geometry="height: 4; width: 8" pivot="-2 0.5 -2" position="0 1 -3" src="./Timeline_Images/story1.PNG">
+          <!--<a-entity id="text"
+            text="color: black; align: center; value: Story Time! color="#F16745"
 
 
             Let us take you through the life journey of John, who was born in 2010.; width: 6"
             rotation="0 0 0">
-          </a-entity>
+          </a-entity>-->
+         <!-- <a-image rotation="0 0 0" src="./Timeline_Images/story.PNG"></a-image>-->
           <a-animation begin="story" attribute="scale" from="1 0 1" to="1 1 1" dur="1500" delay="500"
                        fill="backwards"></a-animation>
-        </a-plane>
+        </a-image>
+        <a-image id="story02" geometry="height: 4; width: 8" pivot="-2 0.5 -2" position="0 1 -3" src="./Timeline_Images/story2.PNG">
+          <a-animation begin="story" attribute="scale" from="1 0 1" to="1 1 1" dur="1500" delay="500"
+                       fill="backwards"></a-animation>
+        </a-image>
+        <a-image id="recommend01" geometry="height: 4; width: 8" pivot="-2 0.5 -2" position="0 1 -3" src="./Timeline_Images/Recommendations.PNG">
+          <a-animation begin="story" attribute="scale" from="1 0 1" to="1 1 1" dur="1500" delay="500"
+                       fill="backwards"></a-animation>
+        </a-image>
         <a-entity id="yearTimeline" visible="false" position="0 -1.5 -1">
           <a-entity id="2010"
             position="0 0 -3.9"
@@ -164,7 +173,7 @@
         <!--<a-animation attribute="rotation" begin="fadeOut" duration="5000" to="0 0 0"></a-animation>-->
       </a-entity>
 
-      <a-entity id="scene02" visible='false' position='0 0 -20'>
+      <a-entity id="scene02" visible='false' position='0 0 -5'>
     
         <a-sky color='#7EC0EE'></a-sky>
         <a-entity light="type: point; color: #EEE; intensity: 0.5" position="0 3 0"></a-entity>
@@ -177,20 +186,20 @@
         <a-entity id="welcomeBoard" geometry="primitive: cylinder; height: 3; radius: .01;"
                   material="color: #000;
                             metalness: 0; repeat: 50 20; roughness: .1"
-                  position="-1.1 0 -1"></a-entity>
+                  position="-1.1 1 -1"></a-entity>
 
-        <a-image id="georgiaBoard" width="1" height="0.5" position="-1.1 1.75 -1" src="./img/ga_plate.png" ></a-image>
-        <a-image position="-1.5 1.2 -2.5" rotation="0 45 0" scale="2 2 1" src="./StoryLine/b1.png"></a-image>
-        <a-image position="-1.5 1.2 -5.5" rotation="0 45 0" scale="2 2 1" src="./StoryLine/b2.png"></a-image>
-        <a-image position="-1.5 1.2 -9.5" rotation="0 45 0" scale="2 2 1" src="./StoryLine/b3.png"></a-image>
-        <a-image position="-1.5 1.2 -13.5" rotation="0 45 0" scale="2 2 1" src="./StoryLine/b4.png"></a-image>
-        <a-image position="-1.5 1.2 -17.5" rotation="0 45 0" scale="2 2 1" src="./StoryLine/b5.png"></a-image>
+        <a-image id="georgiaBoard" width="1" height="0.5" position="-1.1 2.75 -1" src="./img/ga_plate.png" ></a-image>
+        <a-image position="-1.5 1.4 -2.5" rotation="0 45 0" scale="2 2 1" src="./StoryLine/b1.png"></a-image>
+        <a-image position="-1.5 1.4 -5.5" rotation="0 45 0" scale="2 2 1" src="./StoryLine/b2.png"></a-image>
+        <a-image position="-1.5 1.4 -8.5" rotation="0 45 0" scale="2 2 1" src="./StoryLine/b3.png"></a-image>
+        <a-image position="-1.5 1.4 -11.5" rotation="0 45 0" scale="2 2 1" src="./StoryLine/b4.png"></a-image>
+        <a-image position="-1.5 1.4 -14.5" rotation="0 45 0" scale="2 2 1" src="./StoryLine/b5.png"></a-image>
         <a-entity id="goodStoryIMG" visible="false">
-          <a-image position="1.5 1.2 -2.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/b1.png"></a-image>
-          <a-image position="1.5 1.2 -5.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/b2.png"></a-image>
-          <a-image position="1.5 1.2 -9.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/b3.png"></a-image>
-          <a-image position="1.5 1.2 -13.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/b4.png"></a-image>
-          <a-image position="1.5 1.2 -17.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/b5.png"></a-image>
+          <a-image position="1.5 1.4 -2.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/g1.png"></a-image>
+          <a-image position="1.5 1.4 -5.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/g2.png"></a-image>
+          <a-image position="1.5 1.4 -8.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/g3.png"></a-image>
+          <a-image position="1.5 1.4 -11.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/g4.png"></a-image>
+          <a-image position="1.5 1.4 -14.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/g5.png"></a-image>
           <!--<a-image position="1.5 1.2 -2.5" rotation="0 45 0" scale="2 2 1" src="speech1">
             <a-entity id="text"
               text="color: black; align: center; value: Story Time!
@@ -206,17 +215,18 @@
                             repeat: 3 40; roughness: 1"
                   position="0 .2 0">
         </a-entity>
-        <a-collada-model id="infantModel" position="-1 0.16 -6" rotation="0 45 0" scale="1 1 1" src="#kid"><a-animation attribute="rotation" from="0 45 0" to="0 405 0" dur="15000"
-                     easing="linear" repeat="indefinite"></a-animation></a-collada-model>
-          
-        <a-gltf-model id="kidModel" position="-0.5 1.2 -10" rotation="0 0 0" scale="1 1 1" src="#teen"></a-gltf-model>
-        <a-collada-model id="teenModel" position="-0.4 0.16 -14" rotation="0 45 0" scale="1 1 1" src="#male">
+        <a-collada-model id="infantModel" position="-1 0.16 -6" rotation="0 45 0" scale="1 1 1" src="#kid">
+          <!--<a-animation attribute="rotation" from="0 45 0" to="0 405 0" dur="15000"
+                     easing="linear" repeat="indefinite"></a-animation>-->
+        </a-collada-model>          
+        <a-gltf-model id="kidModel" position="-0.5 0.9 -9" rotation="0 0 0" scale="0.7 0.7 0.7" src="#teen"></a-gltf-model>
+        <a-collada-model id="teenModel" position="-0.4 0.16 -11.8" rotation="0 45 0" scale="1 1 1" src="#male">
           </a-collada-model>
-        <a-gltf-model  id="adultModel" position="-0.5 1.2 -18" rotation="0 20 0" scale="0.8 0.8 0.8" src="#adult">
+        <a-gltf-model  id="adultModel" position="-0.5 1.2 -15" rotation="0 20 0" scale="0.8 0.8 0.8" src="#adult">
         </a-gltf-model>
         
         <a-animation attribute="position" begin="fadeOut" dur="5000" to="0 0 0"></a-animation>
-        <a-animation attribute="position" begin="fadeIn" dur="5000" to="0 0 -20"></a-animation>
+        <a-animation attribute="position" begin="fadeIn" dur="5000" to="0 0 -5"></a-animation>
       </a-entity>
     </a-scene>
     <script>
@@ -234,7 +244,11 @@
 
     function run () {
       var storyPLN = document.getElementById('story01');
-            storyPLN.setAttribute('visible','false');
+      storyPLN.setAttribute('visible','false');
+      var recommendPLN = document.getElementById('recommend01');
+      recommendPLN.setAttribute('visible','false');
+      var storyPLN2 = document.getElementById('story02');
+      storyPLN2.setAttribute('visible','false');
         scene.querySelector(".a-enter-vr-button").addEventListener("click", function(e){
             console.log("VR Mode entered");
             this.style.display = "none";
@@ -297,6 +311,7 @@
       welcomeIMG.emit('rotate');
       var storyPLN = document.getElementById('story01');
       storyPLN.setAttribute('visible','false');
+            
       var i = setInterval(function(){
         
         if(counter ===0)
@@ -317,6 +332,7 @@
         }
         if(counter > 2) {
              changeScene('scene01','scene02',1);
+             //startyearTimeline();
              storyPLN.setAttribute('visible','false');
              clearInterval(i);
         }
@@ -369,7 +385,7 @@
     function executeScene2() {
       var adultModel = document.getElementById('adultModel');
       var camera = document.getElementById('camera01');
-      camera.setAttribute('position', '0 1 1');
+      camera.setAttribute('position', '0 1.5 1');
       var counter =0;
       var i = setInterval(function(){
         if(counter ===1)
@@ -404,8 +420,8 @@
                 selectedyear +=1;
             }
             success = false;
-            if(selectedyear === 2021) {
-                
+            if(selectedyear === 2024) 
+            {                
                 clearInterval(i);
                 changeScene('scene01','scene02',1);
             }
@@ -413,75 +429,75 @@
     }
 
     function loadMap(selectedyear){
-        console.log("in load map. counter: "+firstload);
+        console.log("in load map. selectedyear: "+selectedyear);
         
-        var year=document.getElementById(selectedyear);
-        year.setAttribute('position','0 0 -3.9');
-        year.setAttribute('rotation', '0 0 0');
-        var anim=document. createElement('a-animation');
-        anim.setAttribute('attribute','scale');
-        anim.setAttribute('to','3 3 3');
-        year.appendChild(anim);
-        
-        var layer = 'georgia_'+previousSelectedYear;
-
-        var prev = document.getElementById(previousSelectedYear);
-        prev.setAttribute('position','-2.34 0 -3.12')
-        prev.setAttribute('rotation','0 45 0');
-        var anim1=document. createElement('a-animation');
-        anim1.setAttribute('attribute','scale');
-        anim1.setAttribute('to','1 1 1');
-        prev.appendChild(anim1);
-
-        if(selectedyear<2020){
-            var nextYear = document.getElementById(selectedyear+1);
-            nextYear.setAttribute('position','2.34 0 -3.12');
-            nextYear.setAttribute('rotation','0 -45 0');
-        }
-        if(previousSelectedYear>2010)
+        if(selectedyear < 2021)
         {
-          var hideOldPreYr = document.getElementById(previousSelectedYear-1)
-          hideOldPreYr.setAttribute('position','0 0 3.9');
+          var year=document.getElementById(selectedyear);
+          year.setAttribute('position','0 0 -3.9');
+          year.setAttribute('rotation', '0 0 0');
+          var anim=document. createElement('a-animation');
+          anim.setAttribute('attribute','scale');
+          anim.setAttribute('to','3 3 3');
+          year.appendChild(anim);
+          
+          var layer = 'georgia_'+previousSelectedYear;
+      
+          var prev = document.getElementById(previousSelectedYear);
+          prev.setAttribute('position','-2.34 0 -3.12')
+          prev.setAttribute('rotation','0 45 0');
+          var anim1=document. createElement('a-animation');
+          anim1.setAttribute('attribute','scale');
+          anim1.setAttribute('to','1 1 1');
+          prev.appendChild(anim1);
+    
+          if(selectedyear<2020){
+              var nextYear = document.getElementById(selectedyear+1);
+              nextYear.setAttribute('position','2.34 0 -3.12');
+              nextYear.setAttribute('rotation','0 -45 0');
+          }
+          if(previousSelectedYear>2010)
+          {
+            var hideOldPreYr = document.getElementById(previousSelectedYear-1)
+            hideOldPreYr.setAttribute('position','0 0 3.9');
+          }
+          console.log(layer);
+          var visibility = map.getLayoutProperty(layer, 'visibility');
+    
+          if (visibility === 'visible') 
+                map.setLayoutProperty(layer, 'visibility', 'none');            
+      
+          previousSelectedYear = selectedyear;
+      
+          var c = document.querySelector('#map canvas');
+          var img = c.toDataURL('image/png');
+          var texture = document.getElementById('mozvr-logo');
+          texture.setAttribute('src', img);
+          var yeartexture = document.getElementById('timeline_Insights');
+          var yearImageloc = 'Timeline_Images/'+selectedyear+'.PNG';
+          yeartexture.setAttribute('src', yearImageloc); 
         }
-        console.log(layer);
-        var visibility = map.getLayoutProperty(layer, 'visibility');
-
-        if (visibility === 'visible') 
-            map.setLayoutProperty(layer, 'visibility', 'none');            
-  
-        previousSelectedYear = selectedyear;
-
-        var c = document.querySelector('#map canvas');
-        var img = c.toDataURL('image/png');
-        var texture = document.getElementById('mozvr-logo');
-        texture.setAttribute('src', img);
-        var yeartexture = document.getElementById('timeline_Insights');
-        var yearImageloc = 'Timeline_Images/'+selectedyear+'.PNG';
-        yeartexture.setAttribute('src', yearImageloc);  
-        
-            // When a click event occurs on a feature in the states layer, open a popup at the
-            // location of the click, with description HTML from its properties.
-            /*map.on('click', jsonfile, function (e) {
-                new mapboxgl.Popup()
-                    .setLngLat(e.lngLat)
-                    .setHTML(e.features[0].properties.name)
-                    .addTo(map);
-            });
-
-            // Change the cursor to a pointer when the mouse is over the states layer.
-            map.on('mouseenter', jsonfile, function () {
-                map.getCanvas().style.cursor = 'pointer';
-            });
-
-            // Change it back to a pointer when it leaves.
-            map.on('mouseleave', jsonfile, function () {
-                map.getCanvas().style.cursor = '';
-            });*/
+        else if(selectedyear === 2021) 
+            {
+                var recommendPLN = document.getElementById('recommend01');
+                recommendPLN.setAttribute('visible','true');
+                recommendPLN.emit('story');
+                //console.log("in recommendation");
+            }
+        else if(selectedyear === 2023) 
+            {              
+                var recommendPLN = document.getElementById('recommend01');
+                recommendPLN.setAttribute('visible','false');
+                var storyPLN = document.getElementById('story02');
+                storyPLN.setAttribute('visible','true');
+                console.log("in recommendation");
+                storyPLN.emit('story');
+            }
 
         firstload +=1;
         return true;
     }
-
+/*
     function yearAnimation(currentYear){
       var yearCounter = 2011;
       var year10 = document.getElementById('2010');
@@ -529,6 +545,7 @@
         
        }
     }
+  */
 </script>
 
   </body>
