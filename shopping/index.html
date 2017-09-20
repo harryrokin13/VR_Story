@@ -108,9 +108,21 @@
             <a-animation begin="story" attribute="position" from="0 -5 -4" to="0 3.4 -7.4" dur="1500" delay="100"
                          fill="backwards"></a-animation>
         </a-plane>
-
+        <a-text value="Now Interactable" id="Insight_2011" pivot="-2 0.2 -2" geometry="height: 0.8; width: 4.2" position="0 3.6 -7.4" color="#D72900" rotation="0 -10 0" geometry="primitive:plane;color='#D72900'">
+          <a-animation begin="story" attribute="position" from="1 -6 -4" to="0 3.6 -7.4" dur="1500" delay="100"
+                         fill="backwards"></a-animation>
+        </a-text>
+        <a-text value="Now Interactable" id="Insight_2012" pivot="-2 0.2 -2" geometry="height: 0.8; width: 4.2" position="0 2 -7.4" color="#D72900" rotation="0 -10 0" geometry="primitive:plane;color='#D72900'">
+          <a-animation begin="story" attribute="position" from="1 -6 -4" to="0 2 -7.4" dur="1500" delay="100"
+                         fill="backwards"></a-animation>
+        </a-text>
+        <a-plane id="Insight_2013" pivot="-2 0.2 -2" geometry="height: 0.8; width: 4.2" position="0 2 -7.4" color="#D83900" rotation="0 -10 0">
+            <a-text value="Now Interactable"></a-text>
+            <a-animation begin="story" attribute="position" from="1 -8 -4" to="0 2 -7.4" dur="1500" delay="100"
+                         fill="backwards"></a-animation>
+          </a-plane>
         <a-entity id="actualInsights">
-          <a-plane id="Insight_2011" pivot="-2 0.2 -2" geometry="height: 0.8; width: 4.2" position="0 3.6 -7.4" color="#D72900" rotation="0 -10 0">
+          <!--<a-plane id="Insight_2011" pivot="-2 0.2 -2" geometry="height: 0.8; width: 4.2" position="0 3.6 -7.4" color="#D72900" rotation="0 -10 0">
             <a-entity id="text"
               text="color: black; align: center; value: 2011 : 17% lacked basic literacy skills; width: 4; wrapCount: 30"
               rotation="0 0 0">
@@ -118,7 +130,7 @@
             <a-animation begin="story" attribute="position" from="1 -6 -4" to="0 3.6 -7.4" dur="1500" delay="100"
                          fill="backwards"></a-animation>
           </a-plane>
-          <a-plane id="Insight_2012" pivot="-2 0.2 -2" geometry="height: 0.8; width: 4.2" position="0 2.8 -7.4" color="#D73100" rotation="0 0 0">
+          <a-plane id="Insight_2012" pivot="-2 0.2 -2" geometry="height: 0.8; width: 4.2" position="0 2.8 -7.4" color="#D73100" rotation="0 -10 0">
             <a-entity id="text"
               text="color: black; align: center; value: 2012: 43% low literate adults live in poverty; width: 4; wrapCount: 30"
               rotation="0 0 0">
@@ -126,14 +138,14 @@
             <a-animation begin="story" attribute="position" from="1 -7 -4" to="0 2.8 -7.4" dur="1500" delay="100"
                          fill="backwards"></a-animation>
           </a-plane>
-          <a-plane id="Insight_2013" pivot="-2 0.2 -2" geometry="height: 0.8; width: 4.2" position="0 2 -7.4" color="#D83900" rotation="0 0 0">
+          <a-plane id="Insight_2013" pivot="-2 0.2 -2" geometry="height: 0.8; width: 4.2" position="0 2 -7.4" color="#D83900" rotation="0 -10 0">
             <a-entity id="text"
               text="color: black; align: center; value: 2013: 75% of state prison inmates did not complete high school; width: 4; wrapCount: 30"
               rotation="0 0 0">
             </a-entity>
             <a-animation begin="story" attribute="position" from="1 -8 -4" to="0 2 -7.4" dur="1500" delay="100"
                          fill="backwards"></a-animation>
-          </a-plane>
+          </a-plane>-->
           <a-plane id="Insight_2014" pivot="-2 0.2 -2" geometry="height: 0.8; width: 4.2" position="0 1.2 -7.4" color="#D84100" rotation="0 -10 0">
             <a-entity id="text"
               text="color: black; align: center; value: 2014: Low literary costs $73M per year in direct health care costs.; width: 4; wrapCount: 30"
@@ -175,7 +187,7 @@
         </a-curvedimage>
 
         <a-entity id="predictedInsights">
-          <a-plane id="Insight_2018" pivot="-2 0.2 -2" geometry="height: 1.2; width: 4" position="0 3 -7.4" color="#3CB371" rotation="0 -30 0">
+          <a-plane id="Insight_2018" pivot="-2 0.2 -2" geometry="height: 1.2; width: 4" position="0 3 -7.4" color="#3CB371" rotation="0 -10 0">
             <a-entity id="text"
               text="color: black; align: center; value: 2018: Only 38% of kindergartners whose mothers had less than a high school degree could recognize letters; width: 4; wrapCount: 30"
               rotation="0 0 0">
@@ -183,15 +195,15 @@
             <a-animation begin="story" attribute="position" from="1 -7 -4" to="0 3 -7.4" dur="1500" delay="100"
                          fill="backwards"></a-animation>
           </a-plane>
-          <a-plane id="Insight_2019" geometry="height: 1.2; width: 4" position="0 1.8 -7.4" color="#4AC357" rotation="0 -10 0">
+          <a-plane id="Insight_2019" pivot="-2 0.2 -2" geometry="height: 1.2; width: 4" position="0 1.8 -7.4" color="#4AC357" rotation="0 -10 0">
             <a-entity id="text"
               text="color: black; align: center; value: 2019: 43% of people with the lowest literacy skills live in poverty; width: 4; wrapCount: 30"
               rotation="0 0 0">
             </a-entity>
-            <a-animation begin="story" attribute="position" from="1 -8 -4" to="0 1.8 -7.4" dur="500" delay="100"
+            <a-animation begin="story" attribute="position" from="1 -8 -4" to="0 1.8 -7.4" dur="1500" delay="100"
                          fill="backwards"></a-animation>
           </a-plane>
-          <a-plane id="Insight_2020" geometry="height: 1.2; width: 4" position="0 0.6 -7.4" color="#59D43E" rotation="0 10 0">
+          <a-plane id="Insight_2020" pivot="-2 0.2 -2" geometry="height: 1.2; width: 4" position="0 0.6 -7.4" color="#59D43E" rotation="0 -10 0">
             <a-entity id="text"
               text="color: black; align: center; value: 2020: Percentage of the adult prison population without a high school diploma is 4 times that of adults; width: 4; wrapCount: 30"
               rotation="0 0 0">
@@ -214,7 +226,7 @@
         <a-video id="video1" class="video" src="#start01" width="9" height="4.8" position="0 1 -3.5"></a-video>
        
         <!--<a-image id="image" width="26" height="20" position="-9 4 -21" src="" ></a-image>-->
-        <a-image id="story01" geometry="height: 4; width: 8" pivot="-2 0.2 -2" position="0 1 -3" src="./Timeline_Images/story1.PNG">
+        <a-image id="story01" geometry="height: 5; width: 8" pivot="-2 0.2 -2" position="0 1 -3" src="./Timeline_Images/story1.PNG">
           <!--<a-entity id="text"
             text="color: black; align: center; value: Story Time! color="#F16745"
 
@@ -226,11 +238,11 @@
           <a-animation begin="story" attribute="scale" from="1 0 1" to="1 1 1" dur="1500" delay="500"
                        fill="backwards"></a-animation>
         </a-image>
-        <a-image id="story02" geometry="height: 4; width: 8" pivot="-2 0.2 -2" position="0 1 -3" src="./Timeline_Images/story2.PNG">
+        <a-image id="story02" geometry="height: 5; width: 8" pivot="-2 0.2 -2" position="0 1 -3" src="./Timeline_Images/story2.PNG">
           <a-animation begin="story" attribute="scale" from="1 0 1" to="1 1 1" dur="1500" delay="500"
                        fill="backwards"></a-animation>
         </a-image>
-        <a-image id="recommend01" geometry="height: 4; width: 8" pivot="-2 0.2 -2" position="0 1 -3" src="./Timeline_Images/Recommendations.PNG">
+        <a-image id="recommend01" geometry="height: 5; width: 8" pivot="-2 0.2 -2" position="0 1 -3" src="./Timeline_Images/Recommendations.PNG">
           <a-animation begin="story" attribute="scale" from="1 0 1" to="1 1 1" dur="1500" delay="500"
                        fill="backwards"></a-animation>
         </a-image>
