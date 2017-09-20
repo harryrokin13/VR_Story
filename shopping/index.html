@@ -64,10 +64,16 @@
         <img id="floor" src="img/marble.jpg">
         <img id="welcome" src="img/welcome.png">
         <video id="start01" autoplay loop="false" src="Resources/Start.mp4"></video>
-        <audio id="river" src="01.mp3"></audio>
+        <audio id="audio1" src="1.mp3"></audio>
+        <audio id="audio2" src="2.mp3"></audio>
+        <audio id="audio3" src="3.mp3"></audio>
+        <audio id="audio4" src="4.mp3"></audio>
         <a-mixin id="plane" geometry="height: 4; width: 10" pivot="-2 0.5 0"></a-mixin>
       </a-assets>
-      <a-entity id="river1" sound="src: #river; autoplay: true"></a-entity>
+      <a-entity id="audio01" sound="src: #audio1; autoplay: false"></a-entity>
+      <a-entity id="audio02" sound="src: #audio2; autoplay: false"></a-entity>
+      <a-entity id="audio03" sound="src: #audio3; autoplay: false"></a-entity>
+      <a-entity id="audio04" sound="src: #audio4; autoplay: false"></a-entity>
       <!--<a-camera position="0 0 1" cursor-visible="true" cursor-scale="2" cursor-color="#000" cursor-offset="2" cursor-maxdistance="100" cursor-opacity="0.5" cursor-fuse="true"></a-camera>-->
       <a-light color="#fff" position="0 5 0" type="ambient"></a-light>
       <a-entity id="camera01" camera look-controls wasd-controls position='0 0 1'>
@@ -380,6 +386,7 @@
       recommendPLN.setAttribute('visible','false');
       var storyPLN2 = document.getElementById('story02');
       storyPLN2.setAttribute('visible','false');
+      var audio01 = document.getElementById("audio01");
 
       var tempYear = 2010
       while(tempYear <2021) {
@@ -392,6 +399,7 @@
             console.log("VR Mode entered");
             this.style.display = "none";
             vid.play();
+            audio01.playSound();
             
             scene01 = document.getElementById('scene01');
             scene02 = document.getElementById('scene02');
