@@ -63,7 +63,8 @@
         <img id="carpet" src="img/carpet.jpg">
         <img id="floor" src="img/marble.jpg">
         <img id="welcome" src="img/welcome.png">
-        <video id="start01" autoplay loop="false" src="Resources/Start.mp4"></video>
+        <video id="start01" autoplay loop="false" src="Resources/Start1.mp4"></video>
+        <video id="start02" loop="false" src="Resources/Start.mp4"></video>
         <audio id="audio1" src="1.mp3"></audio>
         <audio id="audio2" src="2.mp3"></audio>
         <audio id="audio3" src="3.mp3"></audio>
@@ -229,8 +230,8 @@
         <a-light type="directional" color="#fff" intensity="0.2" position="-1 2 1"></a-light>
         <a-light type="ambient" color="#fff"></a-light>
 
-        <a-video id="video1" class="video" src="#start01" width="9" height="4.8" position="0 1 -3.5"></a-video>
-       
+        <a-video id="video1" class="video" src="#start01" width="9" height="4.8" position="0 1 -2.5"></a-video>
+        <a-video id="video2" class="video" src="#start02" width="9" height="4.8" position="0 1 -3.5"></a-video>
         <!--<a-image id="image" width="26" height="20" position="-9 4 -21" src="" ></a-image>-->
         <a-image id="story01" geometry="height: 5; width: 8" pivot="-2 0.2 -2" position="0 1 -3" src="./Timeline_Images/story1.PNG">
           <!--<a-entity id="text"
@@ -386,9 +387,7 @@
       recommendPLN.setAttribute('visible','false');
       var storyPLN2 = document.getElementById('story02');
       storyPLN2.setAttribute('visible','false');
-      var audio01 = document.getElementById("audio01");
-
-      audio01.components.sound.playSound();
+            
       var tempYear = 2010
       while(tempYear <2021) {
           var insightID = 'Insight_'+tempYear;
@@ -396,19 +395,19 @@
           yearInsightPLN.setAttribute('visible', 'false');
           tempYear +=1;
       }
-      var tcounter = 1;
+      //var tcounter = 1;
         scene.querySelector(".a-enter-vr-button").addEventListener("click", function(e){
-            var i = setInterval(function(){
+            //var i = setInterval(function(){
         
             console.log("VR Mode entered");
-            if(tcounter ===1)
+            //if(tcounter ===1)
               this.style.display = "none";
             vid.play();
-            audio01.components.sound.playSound();
-            tcounter +=1;
+            //audio01.components.sound.playSound();
+            //tcounter +=1;
             scene01 = document.getElementById('scene01');
             scene02 = document.getElementById('scene02');
-          },5000);
+          //},5000);
         }, false);
     }
 
@@ -449,8 +448,27 @@
         videoframe.parentNode.removeChild(videoframe);
 
         console.log("video stopped");
+        introVideo();
+    });
+
+    var video2 = document.getElementById('start02');
+    video2.addEventListener('ended', function (evt) { 
+        video2.parentNode.removeChild(video2);
+        var videoframe = document.getElementById('video2');
+        videoframe.parentNode.removeChild(videoframe);
+
+        console.log("video stopped");
         startTheApp();
     });
+
+    function introVideo() {
+      video2.play();
+      var audio01 = document.getElementById("audio01");
+
+      audio01.components.sound.playSound();
+
+      //startTheApp();
+    }
 
     function startTheApp() {
       var counter = 0;
