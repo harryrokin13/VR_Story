@@ -550,8 +550,11 @@
       camera.setAttribute('position', '0 1.5 1');
       var counter =0;
       camera.emit('walk');
-      var audio04 = document.getElementById("audio04");
-      audio04.components.sound.playSound();
+      if(goodStory ==false)
+      {
+        var audio04 = document.getElementById("audio04");
+        audio04.components.sound.playSound();
+      }            
       var i = setInterval(function(){
         if(counter ===1)
         {
