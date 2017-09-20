@@ -388,6 +388,7 @@
       storyPLN2.setAttribute('visible','false');
       var audio01 = document.getElementById("audio01");
 
+      audio01.components.sound.playSound();
       var tempYear = 2010
       while(tempYear <2021) {
           var insightID = 'Insight_'+tempYear;
@@ -396,13 +397,16 @@
           tempYear +=1;
       }
         scene.querySelector(".a-enter-vr-button").addEventListener("click", function(e){
+            var i = setInterval(function(){
+        
             console.log("VR Mode entered");
             this.style.display = "none";
             vid.play();
-            audio01.playSound();
+            audio01.components.sound.playSound();
             
             scene01 = document.getElementById('scene01');
             scene02 = document.getElementById('scene02');
+          },5000);
         }, false);
     }
 
@@ -457,11 +461,13 @@
       var storyPLN = document.getElementById('story01');
       storyPLN.setAttribute('visible','false');
       var yearInsight = document.getElementById('Insight_2010');
-
+      var audio02 = document.getElementById("audio02");
+      audio02.components.sound.playSound();
       var i = setInterval(function(){
         
         if(counter ===0)
         {
+          
           welcomeIMG.emit('hide');
           welcomeIMG.setAttribute('visible','false');
           mapIMG.setAttribute('visible','true');
@@ -478,8 +484,11 @@
         }
         if(counter ===1)
         {
+          var audio03 = document.getElementById("audio03");
+          audio03.components.sound.playSound();
           storyPLN.setAttribute('visible','true');
           storyPLN.emit('story');
+
         }
         if(counter > 2) {
              changeScene('scene01','scene02',1);
@@ -532,7 +541,7 @@
             startyearTimeline();
             clearInterval(i);
         }
-      }, 50);
+      }, 1000);
     }
 
     function executeScene2() {
@@ -541,6 +550,8 @@
       camera.setAttribute('position', '0 1.5 1');
       var counter =0;
       camera.emit('walk');
+      var audio04 = document.getElementById("audio04");
+      audio04.components.sound.playSound();
       var i = setInterval(function(){
         if(counter ===1)
         {
