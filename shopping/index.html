@@ -64,8 +64,10 @@
         <img id="floor" src="img/marble.jpg">
         <img id="welcome" src="img/welcome.png">
         <video id="start01" autoplay loop="false" src="Resources/Start.mp4"></video>
+        <audio id="river" src="01.mp3"></audio>
         <a-mixin id="plane" geometry="height: 4; width: 10" pivot="-2 0.5 0"></a-mixin>
       </a-assets>
+      <a-entity id="river1" sound="src: #river; autoplay: true"></a-entity>
       <!--<a-camera position="0 0 1" cursor-visible="true" cursor-scale="2" cursor-color="#000" cursor-offset="2" cursor-maxdistance="100" cursor-opacity="0.5" cursor-fuse="true"></a-camera>-->
       <a-light color="#fff" position="0 5 0" type="ambient"></a-light>
       <a-entity id="camera01" camera look-controls wasd-controls position='0 0 1'>
@@ -95,6 +97,7 @@
           <a-animation attribute="rotation" begin="hide" from="0 10 0" to="0 150 0" delay="750"
                        dur="1000"></a-animation>
         </a-curvedimage>
+        <a-image id="legend" visible="false" geometry="height: 0.528; width: 2.648" position="-3 3.5 -4" rotation="0 30 0" src="./Timeline_Images/legend.jpg"></a-image>
 
         <a-entity>
           <a-cylinder position="0 -1.5 -1" radius="4" height="1" side="back" open-ended="true"
@@ -200,6 +203,19 @@
           <a-image position="1.5 1.4 -8.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/g3.png"></a-image>
           <a-image position="1.5 1.4 -11.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/g4.png"></a-image>
           <a-image position="1.5 1.4 -14.5" rotation="0 -45 0" scale="2 2 1" src="./StoryLine/g5.png"></a-image>
+
+          <a-plane pivot="-2 0.2 -2" geometry="height: 0.5; width: 2" position="-1.5 3 -5" color="#F16745">
+            <a-entity id="text"
+              text="color: black; align: center; value: Before; width: 2; wrapCount: 10"
+              rotation="0 0 0">
+            </a-entity>
+          </a-plane>
+          <a-plane pivot="-2 0.2 -2" geometry="height: 0.5; width: 2" position="1.5 3 -5" color="#EF2D5E">
+            <a-entity id="text"
+              text="color: black; align: center; value: After; width: 2; wrapCount: 10"
+              rotation="0 0 0">
+            </a-entity>
+          </a-plane>
           <!--<a-image position="1.5 1.2 -2.5" rotation="0 45 0" scale="2 2 1" src="speech1">
             <a-entity id="text"
               text="color: black; align: center; value: Story Time!
@@ -305,7 +321,7 @@
       var counter = 0;
       var welcomeIMG = document.getElementById('WelcomeIMG');
       var mapIMG = document.getElementById('mozvr-logo');
-      
+      var legend = document.getElementById('legend');
       var timelineEntity = document.getElementById('yearTimeline');
       welcomeIMG.setAttribute('visible','true');
       welcomeIMG.emit('rotate');
@@ -319,6 +335,7 @@
           welcomeIMG.emit('hide');
           welcomeIMG.setAttribute('visible','false');
           mapIMG.setAttribute('visible','true');
+          legend.setAttribute('visible','true');
           mapIMG.emit('rotate');
           var timelineIMG = document.getElementById('timeline_Insights');
           timelineEntity.setAttribute('visible', 'true');
@@ -331,7 +348,7 @@
           storyPLN.emit('story');
         }
         if(counter > 2) {
-             changeScene('scene01','scene02',1);
+             //changeScene('scene01','scene02',1);
              //startyearTimeline();
              storyPLN.setAttribute('visible','false');
              clearInterval(i);
