@@ -396,14 +396,16 @@
           yearInsightPLN.setAttribute('visible', 'false');
           tempYear +=1;
       }
+      var tcounter = 1;
         scene.querySelector(".a-enter-vr-button").addEventListener("click", function(e){
             var i = setInterval(function(){
         
             console.log("VR Mode entered");
-            this.style.display = "none";
+            if(tcounter ===1)
+              this.style.display = "none";
             vid.play();
             audio01.components.sound.playSound();
-            
+            tcounter +=1;
             scene01 = document.getElementById('scene01');
             scene02 = document.getElementById('scene02');
           },5000);
