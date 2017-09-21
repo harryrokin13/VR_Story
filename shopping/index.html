@@ -69,12 +69,21 @@
         <audio id="audio2" src="2.mp3"></audio>
         <audio id="audio3" src="3.mp3"></audio>
         <audio id="audio4" src="4.mp3"></audio>
+        <audio id="audio5" src="5.mp3"></audio>
+        <audio id="audio6" src="6.mp3"></audio>
         <a-mixin id="plane" geometry="height: 4; width: 10" pivot="-2 0.5 0"></a-mixin>
       </a-assets>
       <a-entity id="audio01" sound="src: #audio1; autoplay: false"></a-entity>
       <a-entity id="audio02" sound="src: #audio2; autoplay: false"></a-entity>
       <a-entity id="audio03" sound="src: #audio3; autoplay: false"></a-entity>
-      <a-entity id="audio04" sound="src: #audio4; autoplay: false"></a-entity>
+      <a-entity id="audio04" sound="src: #audio4; autoplay: false">
+        <a-animation attribute="position" begin="walk" easing="linear" dur="60000" delay="500" to="0 1.5 -16"></a-animation>
+      </a-entity>
+      <a-entity id="audio05" position="0 1 -15" sound="src: #audio5; autoplay: false"></a-entity>
+      <a-entity id="audio06" sound="src: #audio6; autoplay: false">
+        <a-animation attribute="position" begin="walk" easing="linear" dur="60000" delay="500" to="0 1.5 -16"></a-animation>
+      </a-entity>
+
       <!--<a-camera position="0 0 1" cursor-visible="true" cursor-scale="2" cursor-color="#000" cursor-offset="2" cursor-maxdistance="100" cursor-opacity="0.5" cursor-fuse="true"></a-camera>-->
       <a-light color="#fff" position="0 5 0" type="ambient"></a-light>
       <a-entity id="camera01" camera look-controls wasd-controls position='0 0 1'>
@@ -294,7 +303,7 @@
           </a-entity>
         </a-entity>
         <a-animation attribute="position" begin="fadeOut" dur="5000" to="0 0 -60"></a-animation>
-        <a-animation attribute="position" begin="fadeIn" dur="5000" to="0 0 -18"></a-animation>
+        <a-animation attribute="position" begin="fadeIn" dur="4000" to="0 0 -18"></a-animation>
         <!--<a-animation attribute="rotation" begin="fadeOut" duration="5000" to="0 0 0"></a-animation>-->
       </a-entity>
 
@@ -465,6 +474,9 @@
 
     function introVideo() {
       //vid.play();
+      var audio01 = document.getElementById("audio01");
+
+        audio01.components.sound.playSound();
       var i = setInterval(function(){
       var video2 = document.getElementById('start01');
         video2.play();
@@ -494,6 +506,8 @@
       var yearInsight = document.getElementById('Insight_2010');
       var audio02 = document.getElementById("audio02");
       audio02.components.sound.playSound();
+      var audio01 = document.getElementById("audio01");
+      audio01.components.sound.stopSound();
       var i = setInterval(function(){
         
         if(counter ===0)
@@ -536,7 +550,9 @@
     function changeScene(fromScene, toScene, storyPoint) {
       var anim = 'fadeOut';
       if(storyPoint == 2)
-      {
+      {        
+        var audio05 = document.getElementById("audio05");
+        audio05.components.sound.playSound();
         anim = 'fadeIn'
       }
 
@@ -550,20 +566,12 @@
       //if(fromScene =='scene01'){
       DesScene.emit(anim);
       if(goodStory == true)
-      {
+      {      
         var goodStoryEntity = document.getElementById('goodStoryIMG');
         goodStoryEntity.setAttribute("visible","true");
-        //Originscene.emit(anim);
-        //make the good story visible
       }
       
-      var i = setInterval(function(){          
-        //Originscene.setAttribute('visible', 'false');
-        //DesScene.setAttribute('visible','true');
-        //DesScene.emit(anim);
-          //var scene02 = document.getElementById('scene02');
-          //scene02.setAttribute('visible','true');
-          //scene02.emit('fadeOut');
+      var i = setInterval(function(){       
         if(fromScene =='scene01'){
           executeScene2();
           clearInterval(i);
@@ -585,7 +593,16 @@
       {
         var audio04 = document.getElementById("audio04");
         audio04.components.sound.playSound();
-      }            
+        audio04.emit('walk');
+      }
+      if(goodStory ==true)
+      {
+        var audio06 = document.getElementById("audio06");
+        audio06.components.sound.playSound();
+        audio06.emit('walk');
+        //var audio05 = document.getElementById("audio05");
+        //audio05.components.sound.playSound();
+      }        
       var i = setInterval(function(){
         if(counter ===1)
         {
